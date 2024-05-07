@@ -22,17 +22,36 @@ def arithmetic_arranger(problems, show_answers=False):
             
             elif operation == '+':
                 max_char = longer_value + 2
-                if show_answers:
-                    results += ' '*(max_char-longer_value)+str(int(num1) + int(num2)) + space
-                row1 += " "*(max_char-len(num1))+str(num1) + space 
+                result_num = int(num1) + int(num2)
+                adjust = (longer_value + 1) if len(str(result_num)) > longer_value else longer_value
+                if problem == problems[-1]:
+                    result_num = int(num1) + int(num2)
+                    adjust = (longer_value + 1) if len(str(result_num)) > longer_value else longer_value
+                    
+                    results += ' '*(max_char-adjust)+str(result_num)
+                    row1 += " "*(max_char-len(num1))+str(num1)
+                    row2 += operation+ ' '*(max_char-len(num2)-1) +str(num2)
+                    dash += '-'*(max_char)
+                    continue
+                results += ' '*(max_char-adjust)+str(int(num1) + int(num2)) + space
+                row1 += " "*(max_char-len(num1))+str(num1) + space
                 row2 += operation+ ' '*(max_char-len(num2)-1) +str(num2) + space
                 dash += '-'*(max_char) + space
                 
             
             elif operation == '-':
                 max_char = longer_value + 2
-                if show_answers:
-                    results += ' '*(max_char-longer_value)+str(int(num1) - int(num2)) + space
+                result_num = int(num1) - int(num2)
+                adjust = (longer_value +1) if len(str(result_num)) > longer_value else longer_value
+                if problem == problems[-1]:
+                    
+                    
+                    results += ' '*(max_char-adjust)+str(result_num)
+                    row1 += " "*(max_char-len(num1))+str(num1) 
+                    row2 += operation+ ' '*(max_char-len(num2)-1) +str(num2)
+                    dash += '-'*(max_char)
+                    continue
+                results += ' '*(max_char-adjust)+str(int(num1) - int(num2)) + space
                 row1 += ' '*(max_char-len(num1))+str(num1) + space
                 row2 += operation + ' '*(max_char-len(num2)-1) +str(num2) + space
                 dash += '-'*(max_char) + space
@@ -45,13 +64,16 @@ def arithmetic_arranger(problems, show_answers=False):
         
         except Exception as e:
              print(e)
-    #string += row1 + row2 + dash
-    if show_answers:
-        string += row1 + row2 + dash + results
-    else:
-        string += row1 + row2 + dash
-    problems.append(string)
-    print(row1 + "\n" + row2 + "\n" + dash + '\n' + results)
-    return problems
 
-print(f'\n{arithmetic_arranger(["3 + 855", "3801 - 2", "45 + 43", "123 + 49"])}')
+    if show_answers:
+        string += row1 + "\n" + row2 + "\n" + dash + '\n' + results
+    else:
+        string += row1 + "\n" + row2 + "\n" + dash
+    problems.append(string)
+    
+    return string
+
+print(f'\n{arithmetic_arranger(["32 - 698", "1 - 3801", "45 + 43", "123 + 49", "988 + 40"], True)}')
+
+
+print('   32         1      45      123      988\n- 698    - 3801    + 43    +  49    +  40\n-----    ------    ----    -----    -----\n -666     -3800      88      172     1028')
