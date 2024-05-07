@@ -1,13 +1,17 @@
-def arithmetic_arranger(problems, show_answers=True):
-    width = 6
+def arithmetic_arranger(problems, show_answers=False):
     dash = ''
     row1=''
     row2=''
     problems_copy = problems[:]
-    
+    results = ''
+    string=''
+    space = ' '*4
     for problem in problems_copy:
         num1, operation, num2 = problem.split(' ')
-        space = 0
+        if len(num1) > len(num2):
+            longer_value = len(num1)
+        else:
+            longer_value = len(num2)
         try:
             if len(problems) > 5:
                     return 'Error: Too many problems.'
@@ -15,37 +19,39 @@ def arithmetic_arranger(problems, show_answers=True):
                     return 'Error: Numbers cannot be more than four digits.'
             elif not num1.isdigit() or not num2.isdigit():
                     return 'Error: Numbers must only contain digits.'
+            
             elif operation == '+':
-                space = width - len(num1)
-                result = int(num1) + int(num2)
-                row1 += " "*space+str(num1)+ ' '*width
-                space = width - len(num2)
-                row2 += operation+ ' '*(space-1) +str(num2)+' '*width
-                dash += '-'*width + ' '*width
-                problems.append(f"\n     {num1}\n{operation}    {num2}\n{dash}")
-                problems.pop(0)
+                max_char = longer_value + 2
+                if show_answers:
+                    results += ' '*(max_char-longer_value)+str(int(num1) + int(num2)) + space
+                row1 += " "*(max_char-len(num1))+str(num1) + space 
+                row2 += operation+ ' '*(max_char-len(num2)-1) +str(num2) + space
+                dash += '-'*(max_char) + space
+                
             
             elif operation == '-':
-                space = width - len(num1)
-                row1 += ' '*space+str(num1) + ' '*width
-                space = width - len(num2)
-                row2 += operation + ' '*(space-1) +str(num2)+' '*width  
-                dash += '-'*width + ' '*width 
-                result = int(num1) - int(num2)
-                problems.append(f"\n   {num1}\n{operation}     {num2}\n{dash}")
-                problems.pop(0)
+                max_char = longer_value + 2
+                if show_answers:
+                    results += ' '*(max_char-longer_value)+str(int(num1) - int(num2)) + space
+                row1 += ' '*(max_char-len(num1))+str(num1) + space
+                row2 += operation + ' '*(max_char-len(num2)-1) +str(num2) + space
+                dash += '-'*(max_char) + space
                 
             elif operation == '/' or operation == '*':
                     return "Error: Operator must be '+' or '-'."
             
             
-            
-        except:
-             pass
-    print(row1 + "\n" + row2 + "\n" + dash)
+            problems.pop(0)
+        
+        except Exception as e:
+             print(e)
+    #string += row1 + row2 + dash
+    if show_answers:
+        string += row1 + row2 + dash + results
+    else:
+        string += row1 + row2 + dash
+    problems.append(string)
+    print(row1 + "\n" + row2 + "\n" + dash + '\n' + results)
     return problems
 
-print(f'\n{arithmetic_arranger(["3801 - 2", "123 + 49"])}')
-#lista=arithmetic_arranger(["32 + 698", "3801 - 2", "45 + 43", "123 + 49"])
-
-print('  3801      123\n-    2    +  49\n------    -----')
+print(f'\n{arithmetic_arranger(["3 + 855", "3801 - 2", "45 + 43", "123 + 49"])}')
