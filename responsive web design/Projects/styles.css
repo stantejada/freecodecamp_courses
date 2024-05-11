@@ -1,0 +1,21 @@
+:root{
+    --black: #2c2830 ;
+    --white: #d8d8ff;
+    --grey: #4f4f51;
+    --pink: #f2c4ce;
+    --dark-pink: #f58f7c;
+  }
+  
+  body {
+    background:linear-gradient(45deg, var(--black)75%, var(--grey));
+    text-align:center;
+  
+  }
+  
+  .presentation{
+    text-align:center;
+  }
+  
+  labe {
+    display: block;
+  }

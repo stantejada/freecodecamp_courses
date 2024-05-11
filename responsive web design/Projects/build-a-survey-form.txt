@@ -1,0 +1,77 @@
+** start of undefined **
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'/>
+  <title>Survey Form</title>
+  <link rel='stylesheet' href='styles.css'>
+</head>
+<body>
+  <div class='presentation'>
+  <h1 class='title' id='title'>Survey Form</h1>
+  <p class='description' id='description'>This is the first project of Responsive Web Design Certification</p>
+  </div>
+  <div class='survey-format'>
+  <form class='survey' id='survey-form'>
+    <fieldset class='personal-information'>
+      <legend>Personal Information</legend>
+      <label for='name' id='name-label'>Name: <input id='name' type='text' required placeholder='Full name'/></label>
+      <label for='email' id='email-label'>Email: <input id='email' type='email' required placeholder='email@mail.com'/></label>
+      <label for='number' id='number-label'>Age: <input id='number' type='number' required min='13' max='120'placeholder='Age'/></label>
+    </fieldset>
+    <fieldset class='programming-language'>
+      <legend class='interest'>Best programming language</legend>
+      <select id='dropdown'>
+        <option value='Python'>Python</option>
+        <option value='JavaScript'>JavaScript</option>
+        <option value='Go'>Go</option>
+        <option value='Java'>Java</option>
+        <option value='C++'>C++</option>
+      </select>
+
+      <label class='level' for='entry-level'><input type='radio' name='level' checked value='1'/>Entry level</label>
+      <label class='level' for='intermediate'><input type='radio' name='level' value='2'/>Intermediate</label>
+      <label class='level' for='advanced'><input type='radio' name='level' value='3'/>Advanced</label>
+      <label class='others'>Do you know other languages</label>
+      <label class='others' for='programming-languages'><input type='checkbox' id='programming-languages' value='1'/> Python</label>
+      <label class='others' for='programming-languages'><input type='checkbox' id='programming-languages' value='2'/> Java</label>
+      <label class='others' for='programming-languages'><input type='checkbox' id='programming-languages' value='3'/> C++</label>
+      <label class='others' for='programming-languages'><input type='checkbox' id='programming-languages' value='4'/> Otros</label>
+      <label for='why-that-language'>Why did you decided for to learn that programming language?</label>
+      <textarea id='why-that-language'></textarea>
+      <input type='submit' id='submit'/>
+    </fieldset>
+  </form>
+  </div>
+</body>
+</html>
+
+** end of undefined **
+
+** start of undefined **
+
+:root{
+  --black: #2c2830 ;
+  --white: #d8d8ff;
+  --grey: #4f4f51;
+  --pink: #f2c4ce;
+  --dark-pink: #f58f7c;
+}
+
+body {
+  background:linear-gradient(45deg, var(--black)75%, var(--grey));
+  text-align:center;
+
+}
+
+.presentation{
+  text-align:center;
+}
+
+labe {
+  display: block;
+}
+
+** end of undefined **
+

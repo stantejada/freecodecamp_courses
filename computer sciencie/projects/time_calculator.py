@@ -2,7 +2,7 @@ def add_time(start, duration, day=''):
 
     time, afte_post = start.split(' ')
     hour, minute = time.split(':')
-    days = ["lunes", 'martes', 'miercoles', 'jueves', 'viernes', 'sabado','domingo']
+    days = ["monday", 'tuesday', 'wednesday', 'thrusday', 'friday', 'saturday','sunday']
     meridiam = ['AM', 'PM']
     dhour, dminute = duration.split(':')
 
@@ -16,24 +16,41 @@ def add_time(start, duration, day=''):
     new_hour = total_minutes // 60
     new_minutes = total_minutes % 60
     
-    for turn in range(new_hour//clock):
+    if afte_post == meridiam[1]:
+        meridiam[0], meridiam[1] = meridiam[1], meridiam[0]
+    
+    for turn in range((new_hour//clock)):
         if new_hour > clock:
-           # meridiam[0], meridiam[1] = meridiam[1], meridiam[0]
+            meridiam[0], meridiam[1] = meridiam[1], meridiam[0]
             new_hour -= clock
-            print(meridiam[0])
-        elif new_hour < clock:
-            break
+            days_count += 0.5
+            
+        elif new_hour == 12:
+                meridiam[0], meridiam[1] = meridiam[1], meridiam[0]
+                days_count += 0.5
+
         if new_minutes > 60:
             new_minutes -=60
             new_hour += 1
-        
+
+            
+    if len(str(new_minutes)) == 1:
+        new_minutes = '0'+ str(new_minutes)
+         
+    for d in range(len(days)):
+        if day.lower() == days[d]:
+            days_count += d
     
+    if day!='':
+        if int(days_count) <= 1:
+            formatted = str(new_hour) + ':' + str(new_minutes) + ' ' + meridiam[0] + ', ' + days[int(days_count)+1].capitalize() + ' (next day)'
+        elif int(days_count) > 1:
+            formatted = str(new_hour) + ':' + str(new_minutes) + ' ' + meridiam[0] + ', ' + days[int(days_count)+1].capitalize() + f' ({int(days_count)} days later)'
+        formatted = str(new_hour) + ':' + str(new_minutes) + ' ' + meridiam[0] + ', ' + days[int(days_count)+1].capitalize()
+    
+    else:
+        formatted = str(new_hour) + ':' + str(new_minutes) + ' ' + meridiam[0]
+    return  formatted
+print(add_time('11:59 PM', '0:10'))
 
-    return  new_hour, new_minutes , (total_minutes//60) ,':' ,(total_minutes%60)
 
-
-print(add_time('11:59 AM', '24:10'))
-
-meridiam = ['AM', 'PM']
-
-print(meridiam.index('AM'))
