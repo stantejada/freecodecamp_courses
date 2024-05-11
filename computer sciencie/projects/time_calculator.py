@@ -6,7 +6,7 @@ def add_time(start, duration, day=''):
     meridiam = ['AM', 'PM']
     dhour, dminute = duration.split(':')
 
-    
+    days_later = int(dhour)/24+1
     
     clock = 12
     change=0
@@ -42,15 +42,33 @@ def add_time(start, duration, day=''):
             days_count += d
     
     if day!='':
-        if int(days_count) <= 1:
-            formatted = str(new_hour) + ':' + str(new_minutes) + ' ' + meridiam[0] + ', ' + days[int(days_count)+1].capitalize() + ' (next day)'
+        if int(days_count) == 1:
+            formatted = str(new_hour) + ':' + str(new_minutes) + ' ' + meridiam[0] + ', ' + days[int(days_count)].capitalize() + ' (next day)'
+            return formatted
         elif int(days_count) > 1:
-            formatted = str(new_hour) + ':' + str(new_minutes) + ' ' + meridiam[0] + ', ' + days[int(days_count)+1].capitalize() + f' ({int(days_count)} days later)'
-        formatted = str(new_hour) + ':' + str(new_minutes) + ' ' + meridiam[0] + ', ' + days[int(days_count)+1].capitalize()
-    
+            days_count=days_count % 7
+            if days[int(days_count)] != days[6] and days_count<6:
+                days_count += 1
+            else: 
+                days_count = 0
+            formatted = str(new_hour) + ':' + str(new_minutes) + ' ' + meridiam[0] + ', ' + days[int(days_count)].capitalize() + f' ({int(days_later)} days later)'
+            return formatted
+        else:
+            formatted = str(new_hour) + ':' + str(new_minutes) + ' ' + meridiam[0] + ', ' + days[int(days_count)].capitalize()
+            return formatted
+    elif day=='':
+        print(days_count)
+        if days_count == 1:
+            formatted = str(new_hour) + ':' + str(new_minutes) + ' ' + meridiam[0]  + ' (next day)'
+            return formatted
+        elif int(days_count) > 1:
+            formatted = str(new_hour) + ':' + str(new_minutes) + ' ' + meridiam[0] + f' ({int(days_count)} days later)'
+            return formatted
+        else:
+            formatted = str(new_hour) + ':' + str(new_minutes) + ' ' + meridiam[0]
+            return formatted
     else:
         formatted = str(new_hour) + ':' + str(new_minutes) + ' ' + meridiam[0]
     return  formatted
-print(add_time('11:59 PM', '0:10'))
 
-
+print(add_time('2:59 AM', '24:00', 'saturDay'))
