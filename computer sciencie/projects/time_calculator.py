@@ -48,7 +48,6 @@ def add_time(start, duration, day=''):
             days_count += d
     
     if day!='':
-        print(days_later)
         if days_count > 1 and afte_post != meridiam[0]:
             days_count +=0.5
         if int(days_count) < 1:
@@ -74,7 +73,8 @@ def add_time(start, duration, day=''):
     elif day=='':
         if days_count > 1 and afte_post != meridiam[0]:
             days_count +=0.5
-
+        elif afte_post != meridiam[0] and meridiam[0] == 'AM':
+            days_count +=0.5
         if int(days_count) < 1:
             formatted = str(new_hour) + ':' + str(new_minutes) + ' ' + meridiam[0]
             return formatted
@@ -86,12 +86,13 @@ def add_time(start, duration, day=''):
             
             formatted = str(new_hour) + ':' + str(new_minutes) + ' ' + meridiam[0] + f' ({int(days_count)} days later)'
             return formatted
+        
         else:
             formatted = str(new_hour) + ':' + str(new_minutes) + ' ' + meridiam[0]
             return formatted
     else:
         formatted = str(new_hour) + ':' + str(new_minutes) + ' ' + meridiam[0]
+        
     return  formatted
 
-print(add_time('2:59 AM', '24:00', 'saturDay'))
-print('2:59 AM, Sunday (next day)')
+print(add_time('10:10 PM', '3:30'))
