@@ -2,23 +2,24 @@ class Category:
     def __init__(self, budget):
         self.budget = budget
         self.ledger=[]
-        
-        print(self.budget.center(30,"*"))
+        self.balance=0
+        self.amount=0
+        self.get_balance()
+
     
     def deposit(self, amount, description=''):
         
         deposit = {
-            "amount":amount,
+            "amount":float(amount),
             "description": description
         }
         self.ledger.append(deposit)
         return True
 
     def withdraw(self, amount, description=''):
-        self.amount=amount
-        if self.check_fund():
+        if self.check_funds(float(amount)):
             withdraw = {
-                "amount": -amount,
+                "amount": -float(amount),
                 "description": description
             }
             self.ledger.append(withdraw)
@@ -33,37 +34,44 @@ class Category:
         return self.balance
     
     def transfer(self, amount, destination):
-        ledger=[]
-        self.amount = amount
-        
-        if self.check_fund():
-            self.withdraw(amount, f'Transfer from {Category.__class__.__name__}')
-            self.deposit(amount, f'Transfer to {destination}')
+        if self.check_funds(float(amount)):
+            self.withdraw(amount, f'Transfer to {destination.budget}')
+            destination.deposit(amount, f'Transfer from {self.budget}')
+            self.get_balance()
             return True
-        else:
-            return False
-            
-    def check_fund(self):
         
-        if self.get_balance() > self.amount:
-            return True
         else:
             return False
     
+            
+    def check_funds(self, amount):
+        
+        if self.get_balance() < amount:
+            return False
+        else:
+            return True
+    
     def __str__(self) -> str:
+        self.get_balance()
         text =''
+        text+=self.budget.center(30,"*")+'\n'
+        ch_total = 30
         for trans in self.ledger:
             desc=trans['description']
-            amount = trans['amount']
-            length = len(desc) + len(trans['description']) 
-            if (len(desc) + len(trans['description']) )> 30:
+            amount ='%.2f'%trans['amount']
+            print(amount)
+            length = len(desc) + len(str(amount))
+            
+            if (len(desc) + len(str(amount)) )> 30:
                 desc = trans['description'][:29-len(str(amount))]
-                text += str(desc) + str(amount) + '\n'
-            else:
-                text += str(desc) + " "*(35-length)+ str(amount) + '\n'
+                text += desc + " " +str(amount) + '\n'
+                continue
+            text += desc + " "*(ch_total-length)+ amount + '\n'
+        text += "Total: " + '%.2f'%self.balance
         return text
     
 def create_spend_chart(categories):
+    
     pass
 
 food = Category("Food")
@@ -73,4 +81,5 @@ food.withdraw(15.89, "restaurant and more food for dessert")
 clothing = Category("Clothing")
 food.transfer(50, clothing)
 print(food)
+
 
