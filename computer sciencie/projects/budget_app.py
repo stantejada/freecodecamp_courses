@@ -59,7 +59,6 @@ class Category:
         for trans in self.ledger:
             desc=trans['description']
             amount ='%.2f'%trans['amount']
-            print(amount)
             length = len(desc) + len(str(amount))
             
             if (len(desc) + len(str(amount)) )> 30:
