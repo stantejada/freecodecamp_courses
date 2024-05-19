@@ -70,8 +70,98 @@ class Category:
         return text
     
 def create_spend_chart(categories):
+    count=0
+    aux=0
+    percentage = {}
     
-    pass
+    clasification, total_bills = cat_and_total_amount(categories)
+    
+    percentage = take_percentage(clasification, total_bills)
+    
+    string=draw_chart(percentage)
+    
+    if categories[-1]:
+        string += "\n"+" "*4+'-'*(len(categories)*3+1)
+    
+    larger =  max(clasification.keys(), key=len)
+
+    #print(larger)
+    
+    for lenght in range(len(larger)):
+        string+='\n'
+        for cat in clasification.keys():
+            try:
+                if cat == categories[0].budget:
+                    if lenght == len(larger)-1:
+                        
+                        string += " "*6
+                    else:
+                        string += " "*5+cat[lenght]
+                
+                #elif larger[lenght] == larger[-1]:
+               
+                elif lenght == len(larger) and larger[lenght] == larger[-1]:
+                    print(lenght, len(larger))
+                    string += " "*2 + cat[lenght]
+                 
+                else:
+                    string += " "*2+cat[lenght]
+            except:
+                
+                string += " "*3
+            
+       # print(string)
+    return string
+                
+def cat_and_total_amount(categories):
+    clasification = {}
+    total_bills = 0
+    for category in categories:
+        
+        for bill in category.ledger:
+            if bill['amount'] < 0 and bill['description'][:8].lower() != 'transfer':
+                total_bills += bill['amount']
+                if category.budget in clasification:
+                    aux = clasification[category.budget] + bill['amount']
+                    clasification[category.budget] = aux
+                    
+                else:
+                    clasification[category.budget] = bill['amount']
+    
+    return clasification, total_bills
+    
+def take_percentage(clasification, total_bills):
+    percentage = {}
+    for category in clasification.keys():
+        percentage[category] = round(clasification[category] / total_bills * 100,1)
+    
+    return percentage
+
+
+def draw_chart(percentage):
+    keys = percentage.keys()
+    string=''
+    
+    try:
+        string+='Percentage spent by category' + '\n'
+        for col in range(100,-1,-10):
+            if col >= 10 and col < 100:
+                string += " " + str(col) + "|" + " "
+            elif col < 10:
+                string += "  " + str(col) + "|"+ " "
+            else:
+                string += "" + str(col) + "|"+ " "
+            for key in keys:
+                if percentage[key] >= col:
+                    string +=  "o" + "  "
+                else:
+                    string +=  " "+ "  "
+            if col != 0:
+                string += '\n'
+        return string
+    except:
+        pass
+    
 
 food = Category("Food")
 food.deposit(1000, "deposit")
@@ -79,6 +169,27 @@ food.withdraw(10.15, "groceries")
 food.withdraw(15.89, "restaurant and more food for dessert")
 clothing = Category("Clothing")
 food.transfer(50, clothing)
-print(food)
+clothing.deposit(800, "deposit")
+clothing.withdraw(25, "pair of shoes")
+clothing.withdraw(15, "hodies")
+education = Category("Education")
+education.deposit(500,"deposit")
+education.withdraw(135, "tuition")
+education.withdraw(90, "books")
+health = Category('Health')
+health.deposit(200, "deposit")
+health.withdraw(100, "Medicine")
+services = Category("Services")
+services.deposit(100, "deposit")
+services.withdraw(25, "light")
+
+# print(food)
+# print(clothing)
+# print(education)
+categories =[clothing,education,food,health]
+
+print(create_spend_chart(categories))
+
+
 
 
