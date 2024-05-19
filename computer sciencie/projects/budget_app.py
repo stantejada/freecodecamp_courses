@@ -81,28 +81,29 @@ def create_spend_chart(categories):
     string=draw_chart(percentage)
     
     if categories[-1]:
-        string += "\n"+" "*4+'-'*(len(categories)*3+1)
+        string += "\n"+ " "*4 + '-'*(len(categories)*3+1)
     
     larger =  max(clasification.keys(), key=len)
+    shorter = min(clasification.keys(), key=len)
 
-    #print(larger)
     
     for lenght in range(len(larger)):
         string+='\n'
         for cat in clasification.keys():
             try:
                 if cat == categories[0].budget:
-                    if lenght == len(larger)-1:
+                    if lenght >= len(larger)-len(shorter)-1:
                         
                         string += " "*6
+                            
+                        
                     else:
-                        string += " "*5+cat[lenght]
+                        string += " "*5+cat[lenght] #+ "  "
                 
-                #elif larger[lenght] == larger[-1]:
                
                 elif lenght == len(larger) and larger[lenght] == larger[-1]:
                     print(lenght, len(larger))
-                    string += " "*2 + cat[lenght]
+                    string += " "*2 + cat[lenght] + "  "
                  
                 else:
                     string += " "*2+cat[lenght]
@@ -111,6 +112,7 @@ def create_spend_chart(categories):
                 string += " "*3
             
        # print(string)
+        string += "  "
     return string
                 
 def cat_and_total_amount(categories):
@@ -139,9 +141,9 @@ def take_percentage(clasification, total_bills):
 
 
 def draw_chart(percentage):
-    keys = percentage.keys()
+    keys = list(percentage.keys())
     string=''
-    
+    print(list(keys))
     try:
         string+='Percentage spent by category' + '\n'
         for col in range(100,-1,-10):
@@ -153,6 +155,9 @@ def draw_chart(percentage):
                 string += "" + str(col) + "|"+ " "
             for key in keys:
                 if percentage[key] >= col:
+                    # if keys[-1]:
+                    #     string +=  "o"
+                    # else:
                     string +=  "o" + "  "
                 else:
                     string +=  " "+ "  "
@@ -162,34 +167,3 @@ def draw_chart(percentage):
     except:
         pass
     
-
-food = Category("Food")
-food.deposit(1000, "deposit")
-food.withdraw(10.15, "groceries")
-food.withdraw(15.89, "restaurant and more food for dessert")
-clothing = Category("Clothing")
-food.transfer(50, clothing)
-clothing.deposit(800, "deposit")
-clothing.withdraw(25, "pair of shoes")
-clothing.withdraw(15, "hodies")
-education = Category("Education")
-education.deposit(500,"deposit")
-education.withdraw(135, "tuition")
-education.withdraw(90, "books")
-health = Category('Health')
-health.deposit(200, "deposit")
-health.withdraw(100, "Medicine")
-services = Category("Services")
-services.deposit(100, "deposit")
-services.withdraw(25, "light")
-
-# print(food)
-# print(clothing)
-# print(education)
-categories =[clothing,education,food,health]
-
-print(create_spend_chart(categories))
-
-
-
-
