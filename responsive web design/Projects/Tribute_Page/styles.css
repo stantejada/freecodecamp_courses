@@ -1,0 +1,125 @@
+*{
+    font-family: Tahoma;
+  }
+  
+  body{
+    background-color: #f3f3f3;
+    margin: 0;
+  }
+  .nav-bar {
+    position: sticky;
+    background-color: #3D86BB;
+    display: flex;
+    top: 0;
+    color: #fff;
+    width: 100%
+  }
+  .logo{
+    padding-left:5px;
+    margin: 10px auto;
+    text-decoration: none;
+    color: white;
+    width: 30px;
+  }
+  nav{
+    display: flex;
+    justify-content:space-between;
+  }
+  
+  nav h2 {
+    font-size: 15px;
+    text-align: center;
+  }
+  nav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #3D86BB;
+  
+  }
+  nav li{
+    float: left;
+  }
+  main{
+    padding-top: 10px;
+    margin: 0 auto;
+  }
+  .nav-link{
+    display: inline;
+  }
+  .nav-link a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    
+  }
+  .nav-link a:hover{
+    background-color:#1671B3;
+  }
+  .nav-bar{
+    background-color: #3D86BB;
+    margin:0;
+    padding:0;
+  }
+  
+  #main{
+    text-align: center;
+    background-color: #fff;
+    margin: 25px;
+    padding: 0px;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  #image{
+    display: block;
+    max-width: 100%;
+    height: auto;
+    text-align:center;
+  }
+  #tribute-info{
+    text-align: justify;
+    margin: 25px;
+    padding: 0;
+  }
+  
+  
+  .timeline-list li{
+    display:flex;
+    margin: 0;
+    margin-right: 25px;
+    padding: 0;
+    text-align: justify;
+  
+  }
+  
+  .thanks-to h2{
+    text-align:center;
+  }
+  
+  .thanks-to{
+    text-align: justify;
+    margin: 20px;
+  }
+  
+  .thanks-to a{
+    text-decoration: none;
+    color: black;
+  }
+  
+  .thanks-to p{
+    margin:auto;
+    padding: 10px;
+  }
+  
+  .footer-info{
+    text-align: center;
+  }
+  .footer-info a{
+    text-decoration: none;
+    color: gray;
+  }
