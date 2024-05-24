@@ -6,3 +6,8 @@ for line in fhand:
     
     
 #1:10:44 DJ4E
+
+
+
+
+###  https://roadmap.sh/backend/project-ideas  Ideas de backend developer###
