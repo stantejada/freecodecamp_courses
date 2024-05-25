@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Page</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <main id="main-doc">
+        <nav id="navbar">
+            <!--Here i will be add de index-->
+            <header>Index</header>
+            <ul class="index">
+                <li><a class="nav-link" href="#introduction_to_python">Introduction to python</a></li>
+                <li><a class="nav-link" href="#variables_and_data_types">Variables and Data Types</a></li>
+                <li><a class="nav-link" href="#control_flow_statements">Control Flow Statements</a></li>
+                <li><a class="nav-link" href="#functions">Functions</a></li>
+                <li><a class="nav-link" href="#working_with_lists_and_dictionaries">Working with Lists and Dictionaries</a></li>
+                <li><a class="nav-link" href="#references">References</a></li>
+            </ul>
+        </nav>
+        <h1 class="titulo">Python Programming Tutorial</h1>
+        <section class="main-section" id="introduction_to_python">
+            <header>
+                <h2 class="subtitle">Introduction to Python</h2>
+            </header>
+            <article>
+                <p class="description">Python is a versatile and powerful programming language 
+                    that is widely used in various fields, including web development, data science,
+                     artificial intelligence, and more. Its simple syntax and readability make it 
+                     an excellent choice for beginners and experienced programmers alike.</p>
+                <p class="description">Python supports multiple programming paradigms, including 
+                    procedural, object-oriented, and functional programming. This flexibility allows 
+                    developers to choose the best approach for their specific tasks. In this tutorial, 
+                    we will explore the basics of Python and provide examples to help you get started 
+                    with this amazing language.</p>
+                <code class="code">
+                    1|# Simple Python program to print "Hello, World!"<br>
+                    2|print("Hello, World!")
+                </code>
+                
+            </article>
+        </section>
+
+        <section class="main-section" id="variables_and_data_types">
+            <header>
+                <h2 class="subtitle">Variables and Data Types</h2>
+            </header>
+            <article>
+                <p class="description">Variables in Python are used to 
+                    store data that can be manipulated and retrieved later. 
+                    Unlike many other programming languages, Python does not
+                     require explicit declaration of variable types. Instead,
+                      the type is inferred from the value assigned to the 
+                      variable.</p>
+                <p class="description">Python supports several data types,
+                     including integers, floats, strings, and booleans. 
+                     Understanding these basic data types is crucial for 
+                     writing effective Python code. Let’s look at some examples
+                      of how to work with variables and data types.</p>
+                <code class="code">
+                    1| # Variable assignment <br>
+                    2| x = 10       # Integer <br>
+                    3| y = 3.14     # Float <br>
+                    4| name = "Alice"  # String<br>
+                    5| is_active = True  # Boolean<br>
+                    6| <br>
+                    7| # Printing variables<br>
+                    8| print(x, y, name, is_active)<br>
+                </code>
+            </article>
+        </section>
+
+        <section class="main-section" id="control_flow_statements">
+            <header>
+                <h2 class="subtitle">Control Flow Statements</h2>
+            </header>
+            <article>
+                <p class="description">Control flow statements in Python allow 
+                    you to control the execution of code based on certain conditions.
+                     The primary control flow statements are if, elif, and else, 
+                     which help you execute different code blocks based on conditions.</p>
+                <p class="description">In addition to conditional statements,
+                     Python also supports loops, which are used to repeat a 
+                     block of code multiple times. The two main types of loops are 
+                     for and while. Understanding these control flow mechanisms is 
+                     essential for writing dynamic and responsive programs.</p>
+                <code class="code">
+                    1| # if-else statement example <br>
+                    2| age = 18 <br>
+                    3| if age >= 18:<br>
+                    4| &nbsp &nbsp print("You are an adult.")<br>
+                    5| else:<br>
+                    6| &nbsp &nbsp print("You are a minor.") <br>
+                    7| # For loop example<br>
+                    8| for i in range(5):<br>
+                    9| &nbsp &nbsp print(i)<br>
+                </code>
+            </article>
+        </section>
+
+        <section class="main-section" id="functions">
+            <header>
+                <h2 class="subtitle">Functions</h2>
+            </header>
+            <article>
+                <p class="description">Functions in Python are reusable blocks of code 
+                    that perform a specific task. They help in organizing code, making 
+                    it more readable and maintainable. Functions can take input arguments 
+                    and return output values.</p>
+                <p class="description">Defining a function in Python is straightforward. 
+                    Use the <em>def</em> keyword followed by the function name and parentheses.
+                     Inside the parentheses, you can define parameters. The function body
+                      is indented and contains the code to be executed.</p>
+                <code class="code">
+                    1| # Defining a function <br>
+                    2| def greet(name): <br>
+                    3| &nbsp &nbsp return f"Hello, {name}!"<br>
+                    4| <br>
+                    5| # Calling the function<br>
+                    6| print(greet("Alice")) <br>
+                </code>
+            </article>
+        </section>
+
+        <section class="main-section" id="working_with_lists_and_dictionaries">
+            <header>
+                <h2 class="subtitle">Working with Lists and Dictionaries</h2>
+            </header>
+            <article>
+                <p class="description">Lists and dictionaries are two of the most 
+                    commonly used data structures in Python. Lists are ordered 
+                    collections of items that can be of any data type. They are 
+                    mutable, meaning their elements can be changed.</p>
+                <p class="description">Dictionaries, on the other hand, are 
+                    unordered collections of key-value pairs. They are also 
+                    mutable and allow for fast retrieval of values based on 
+                    their keys. Understanding how to manipulate these data 
+                    structures is key to effective Python programming.</p>
+                <code class="code">
+                    01| # List example<br>
+                    02| fruits = ["apple", "banana", "cherry"]<br>
+                    03| fruits.append("orange")<br>
+                    04| print(fruits)<br>
+                    05| <br>
+                    06| person = {<br>
+                    07| &nbsp &nbsp"name": "Alice",<br>
+                    09| &nbsp &nbsp "age": 25,<br> 
+                    10| &nbsp &nbsp "city": "New York"<br>
+                    11| }<br>
+                    12| print(person["name"])<br>
+                </code>
+            </article>
+        </section>
+
+        <section class="main-section" id="references">
+            <header>
+                <h2 class="subtitle">References</h2>
+            </header>
+            <article>
+                <p class="description">To deepen your understanding of Python and 
+                    explore advanced topics, here are some valuable references and 
+                    resources:</p>
+                    <br>
+                <ul>
+                    <h4>Official Python Documentation:</h4>
+                    <li>The official documentation is the most 
+                        comprehensive resource for learning Python.
+                         It covers every aspect of the language, 
+                         from basic syntax to advanced features.</li>
+                    <br>
+                    <h4>Books:</h4>
+                    <li>"Automate the Boring Stuff with Python" by Al Sweigart:</li>
+                    <li>"Python Crash Course" by Eric Matthes:</li>
+                    <li>"Fluent Python" by Luciano Ramalho:</li>
+                    <br>
+                    <h4>Online Courses and Tutorials:</h4>
+                    <li>Coursera: Python for Everybody Specialization</li>
+                </ul>
+            </article>
+        </section>
+    </main>
+    <footer >
+        <p>Developed by <a href="https://www.github.com/stantejada">Diego Tejada</a></p>
+    </footer>
+</body>
+</html>
