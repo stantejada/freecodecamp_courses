@@ -1,0 +1,197 @@
+:root{
+    --primary-font: #333333;
+    --secondary-font: #555555;
+    --accent-font: #03ce03;
+
+    --primary-button: #03ce03;
+    --secondary-button: #6C757D;
+    --accent-button:  #FFC107;
+
+    --primary-title: #000000;
+    --secondary-title: #555555;
+    --accent-title: #03ce03;
+
+    --section-color-primary: #ffffff;
+    --section-color-secondary: #F8F9FA;
+
+    /*navbar colors*/
+    --navbar-color: #000000;
+    --link-color: #FFFFFF; 
+    --hover-color: #03ce03;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#navbar{
+    display: flex;
+    background-color: var(--navbar-color);
+    color: var(--link-color);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    overflow: hidden;
+    text-align: center;
+    
+}
+#navbar div{
+    float: right;
+    justify-content: center;
+    margin: 0 auto;
+    text-align: center;
+}
+.logo{
+    display: flex;;
+    text-align: center;
+    font-size: 100%;
+    width: 100%;
+    height: 100%;
+    margin: 0px auto;
+}
+.logo a{
+    text-decoration: none;
+    text-align: center;
+    font-size: 100%;
+    width: 100%;
+    padding: 5px;
+    float: left;
+
+}
+
+#navbar ul{
+    display:flex;
+    list-style-type: none;
+    text-align: center;
+    font-size: 100%;
+    height: 100%;
+    margin: 0px auto;
+}
+
+#navbar li a{
+    color: var(--link-color);
+    text-decoration: none;
+    padding: 14px 16px;
+}
+
+#navbar li a:hover{
+    background-color: var(--hover-color);
+}
+
+
+
+.welcome-section{
+    display: flex;
+    height: 100vh;
+    background-image: url(https://e0.pxfuel.com/wallpapers/149/259/desktop-wallpaper-web-development.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.welcome-section div{
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 50%;
+    display: inline;
+    color: white;
+    width: 50%;
+}
+.email{
+    color: white;
+    text-decoration: none;
+}
+
+.fab{
+    font-size: 30px;
+    color: var(--accent-font);
+    padding: 5px;
+    text-decoration: none;
+}
+
+.fa-brands , .fa-solid{
+    text-decoration: none;
+    font-size: 30px;
+    padding: 5px;
+    color: var(--accent-font);
+}
+
+#projects{
+    display: grid;
+    margin: 0 auto;
+    overflow: hidden;
+    grid-column: 1;
+}
+
+#projects h2{
+    text-align: center;
+}
+
+.project-img img{
+    padding: 5%;
+    height: 90%;
+    width: 90%;
+}
+
+.project-title-tools{
+    text-align: center;
+    margin: 0 auto;
+    
+}
+.project-description{
+    text-align: center;
+    margin: 0 auto;
+    
+}
+
+footer{
+    display: flex;
+    width: 100%;
+    background-color: var(--section-color-secondary);
+}
+
+.footer-social-media{
+    display: grid;
+    grid-column: 1;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.resume{
+    font-size: 1rem;
+    padding-left: 5%;
+    padding-right: 30%;
+    max-width: 150px;
+}
+.footer-name{
+    text-align: center;
+}
+.footer-specialized{
+    font-size: 12px;
+    text-align: center;
+    margin-top: -10px;
+}
+
+
+@media only screen and (min-width: 600px){
+    .welcome-section div{
+        padding-top: 30%;
+    }
+    .footer-social-icons{
+        display: flex;
+    }
+}
+
+@media only screen and (min-width: 768px){
+    .welcome-section div{
+        padding-top: 20%;
+    }
+    .footer-social-media a{
+        display: flex;
+    }
+}
+@media only screen and (min-width: 1200px){
+    
+
+}
